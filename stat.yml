@@ -18,3 +18,4 @@
     - name: Install percona repository
       yum: name=http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm state=present
       when: not service_status.stat.exists
+    #- debug: var=service_status
