@@ -1,0 +1,10 @@
+---
+- hosts: sbox
+  tasks:
+    # create a mysql user with a random password
+    - mysql_user: login_user=root
+                  login_password='mysql4dba'
+                  name=ukatru
+                  password="{{ lookup('password', 'credentials/' + client + '/' + tier + '/' + role + '/mysqlpassword length=15') }}"
+                  priv=*.*:ALL,GRANT
+                  host="%"

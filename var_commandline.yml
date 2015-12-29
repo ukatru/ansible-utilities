@@ -1,0 +1,9 @@
+---
+- hosts: sbox
+  user: root
+  gather_facts: false
+  vars:
+    appuser: "{{ myappuser }}"
+  tasks:
+    - debug: var=appuser
+    - command: echo "{{ appuser }}">/tmp/ans.dat
