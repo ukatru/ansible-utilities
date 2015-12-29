@@ -1,10 +1,22 @@
 ---
 - hosts: sbox
+  gather_facts: false
+  user: root
   tasks:
     # create a mysql user with a random password
-    - mysql_user: login_user=root
+    - name: Create App user
+      mysql_user: login_user=root
                   login_password='mysql4dba'
+                  login_unix_socket=/opt/mysqladm/tmp/mysql.sock
                   name=ukatru
-                  password="{{ lookup('password', 'credentials/' + client + '/' + tier + '/' + role + '/mysqlpassword length=15') }}"
-                  priv=*.*:ALL,GRANT
+                  password=radhi454
+                  priv={{ db_name }}.*:ALL,GRANT
                   host="%"
+                  state=present
+    - name: Create database
+      mysql_db: login_user=root
+                login_password='mysql4dba'
+                login_unix_socket=/opt/mysqladm/tmp/mysql.sock
+                name={{ db_name }}
+                state=present
+                
