@@ -1,0 +1,19 @@
+#===============================================================================
+# Name : vars.yml
+# purpose: 
+#				This playbook explains how to use mail module
+#
+# revisions:
+#			11-24-2015,	UK,	Example Mail Module
+#===============================================================================
+---
+- hosts: ubuntu
+  sudo: true
+  gather_facts: true
+  tasks:
+    - local_action: mail
+                host='mail002.ukatru.com'
+                from="ukatru@ukatru.com"
+                to="ukatru@ukatru.com"
+                subject='Ansible-report'
+                body='System {{ ansible_hostname }} has been successfully provisioned.'
