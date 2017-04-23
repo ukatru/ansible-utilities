@@ -4,7 +4,7 @@
 #				This playbook explains how to use mail module
 #
 # revisions:
-#			11-24-2015,	UK,	Example Mail Module testing
+#			11-24-2015,	UK,	Example Mail Module testing- uma testing
 #===============================================================================
 ---
 - hosts: ubuntu
